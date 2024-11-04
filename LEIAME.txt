@@ -1,0 +1,5 @@
+* daw-postgresql:
+docker compose -f docker-compose-postgresql.yaml up -d
+
+* daw-mysql:
+docker compose -f docker-compose-mysql.yaml up -d
