@@ -5,12 +5,14 @@ import java.util.Date;
 
 import br.edu.ifpb.es.daw.dao.UserDAO;
 import br.edu.ifpb.es.daw.entities.User;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class MainUpdate {
 
 	public static void main(String[] args) throws DawException {
-		UserDAO dao = new UserDAO();
-		try {
+		try(EntityManagerFactory emf = Persistence.createEntityManagerFactory("daw")) {
+			UserDAO dao = new UserDAO(emf);
 			// Primeiro salvar
 			User user = new User();
 
@@ -29,8 +31,6 @@ public class MainUpdate {
 			dao.update(user);
 
 			System.out.println(user);
-		} finally {
-			dao.close();
 		}
 	}
 

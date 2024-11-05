@@ -3,6 +3,7 @@ package br.edu.ifpb.es.daw.dao;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.TypedQuery;
@@ -10,6 +11,10 @@ import jakarta.persistence.TypedQuery;
 import br.edu.ifpb.es.daw.entities.User;
 
 public class UserDAO extends DAO {
+
+	public UserDAO(EntityManagerFactory emf) {
+		super(emf);
+	}
 
 	public void save(User user) throws PersistenciaDawException {
 		try(EntityManager em = getEntityManager()) {

@@ -5,12 +5,14 @@ import java.util.Date;
 
 import br.edu.ifpb.es.daw.dao.UserDAO;
 import br.edu.ifpb.es.daw.entities.User;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class MainGetByID {
 
 	public static void main(String[] args) throws DawException {
-		UserDAO dao = new UserDAO();
-		try {
+		try(EntityManagerFactory emf = Persistence.createEntityManagerFactory("daw")) {
+			UserDAO dao = new UserDAO(emf);
 			// Primeiro salvar
 			User user = new User();
 
@@ -26,8 +28,6 @@ public class MainGetByID {
 			User resultado = dao.getByID(user.getId());
 
 			System.out.println(user.equals(resultado));
-		} finally {
-			dao.close();
 		}
 	}
 
