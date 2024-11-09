@@ -27,7 +27,7 @@ public class MainDelete {
 
 			// Depois apagar
 
-			dao.delete(user);
+			dao.delete(user.getId());
 
 			System.out.println(dao.getAll().size());
 		}

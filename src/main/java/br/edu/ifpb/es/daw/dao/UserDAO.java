@@ -10,9 +10,9 @@ public interface UserDAO {
 
     User update(User user) throws PersistenciaDawException;
 
-    void delete(User user) throws PersistenciaDawException;
+    void delete(Integer userId) throws PersistenciaDawException;
 
-    User getByID(int userId) throws PersistenciaDawException;
+    User getByID(Integer userId) throws PersistenciaDawException;
 
     List<User> getAll() throws PersistenciaDawException;
 }
