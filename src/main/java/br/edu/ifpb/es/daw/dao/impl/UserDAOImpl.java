@@ -2,7 +2,6 @@ package br.edu.ifpb.es.daw.dao.impl;
 
 import java.util.List;
 
-import br.edu.ifpb.es.daw.dao.DAO;
 import br.edu.ifpb.es.daw.dao.UserDAO;
 import br.edu.ifpb.es.daw.dao.PersistenciaDawException;
 import jakarta.persistence.EntityManager;
@@ -13,10 +12,16 @@ import jakarta.persistence.TypedQuery;
 
 import br.edu.ifpb.es.daw.entities.User;
 
-public class UserDAOImpl extends DAO implements UserDAO {
+public class UserDAOImpl implements UserDAO {
+
+	private EntityManagerFactory emf;
 
 	public UserDAOImpl(EntityManagerFactory emf) {
-		super(emf);
+		this.emf = emf;
+	}
+
+	protected EntityManager getEntityManager() {
+		return emf.createEntityManager();
 	}
 
 	public void save(User user) throws PersistenciaDawException {
