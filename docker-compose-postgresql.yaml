@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: daw-postgresql
-    image: postgres:17.6
+    image: postgres:17.9
     environment:
       POSTGRES_USER: daw
       POSTGRES_PASSWORD: daw
